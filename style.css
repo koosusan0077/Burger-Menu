@@ -1,0 +1,260 @@
+/* ==========================================================================
+   Link in Bio — Mobile-first, performance-optimized styles
+   ========================================================================== */
+
+:root {
+  --bg: #0a0a0f;
+  --bg-elevated: #12121a;
+  --bg-hover: #1a1a26;
+  --text: #f5f5f7;
+  --text-muted: #a1a1aa;
+  --accent: #6366f1;
+  --accent-glow: rgba(99, 102, 241, 0.35);
+  --border: rgba(255, 255, 255, 0.08);
+  --border-hover: rgba(255, 255, 255, 0.18);
+  --radius-sm: 12px;
+  --radius-lg: 16px;
+  --radius-full: 9999px;
+  --shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+  --tap-min: 52px;
+  --font: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --transition: 180ms ease;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  min-height: 100dvh;
+  font-family: var(--font);
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--text);
+  background-color: var(--bg);
+  background-image:
+    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(99, 102, 241, 0.15), transparent),
+    radial-gradient(ellipse 60% 40% at 100% 100%, rgba(99, 102, 241, 0.06), transparent);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.page {
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 2.5rem 1.25rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+/* --------------------------------------------------------------------------
+   Profile header
+   -------------------------------------------------------------------------- */
+
+.profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.75rem;
+  width: 100%;
+}
+
+.profile__avatar {
+  width: 96px;
+  height: 96px;
+  border-radius: var(--radius-full);
+  object-fit: cover;
+  border: 2px solid var(--border-hover);
+  box-shadow: var(--shadow), 0 0 0 4px rgba(99, 102, 241, 0.12);
+}
+
+.profile__title {
+  font-size: clamp(1.5rem, 5vw, 1.75rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.profile__bio {
+  font-size: 0.9375rem;
+  color: var(--text-muted);
+  max-width: 28ch;
+}
+
+/* --------------------------------------------------------------------------
+   Link buttons
+   -------------------------------------------------------------------------- */
+
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  width: 100%;
+}
+
+.link-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  min-height: var(--tap-min);
+  padding: 1rem 1.25rem;
+  border-radius: var(--radius-lg);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  letter-spacing: -0.01em;
+  transition:
+    background var(--transition),
+    border-color var(--transition),
+    transform var(--transition),
+    box-shadow var(--transition);
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+.link-btn__label {
+  flex: 1;
+  text-align: left;
+}
+
+.link-btn__arrow {
+  flex-shrink: 0;
+  font-size: 1.125rem;
+  opacity: 0.5;
+  transition: opacity var(--transition), transform var(--transition);
+}
+
+.link-btn--accent {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(99, 102, 241, 0.08));
+  border-color: rgba(99, 102, 241, 0.4);
+}
+
+@media (hover: hover) {
+  .link-btn:hover {
+    background: var(--bg-hover);
+    border-color: var(--border-hover);
+    box-shadow: 0 0 0 1px var(--border-hover);
+  }
+
+  .link-btn:hover .link-btn__arrow {
+    opacity: 1;
+    transform: translateX(3px);
+  }
+
+  .link-btn--accent:hover {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.3), rgba(99, 102, 241, 0.12));
+    border-color: rgba(99, 102, 241, 0.6);
+    box-shadow: 0 0 20px var(--accent-glow);
+  }
+}
+
+.link-btn:active {
+  transform: scale(0.98);
+  background: var(--bg-hover);
+}
+
+.link-btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* --------------------------------------------------------------------------
+   Social footer
+   -------------------------------------------------------------------------- */
+
+.social {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding-top: 0.5rem;
+}
+
+.social__link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-sm);
+  color: var(--text-muted);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  transition:
+    color var(--transition),
+    background var(--transition),
+    border-color var(--transition),
+    transform var(--transition);
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+.social__icon {
+  width: 20px;
+  height: 20px;
+}
+
+@media (hover: hover) {
+  .social__link:hover {
+    color: var(--text);
+    background: var(--bg-hover);
+    border-color: var(--border-hover);
+  }
+}
+
+.social__link:active {
+  transform: scale(0.92);
+}
+
+.social__link:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* --------------------------------------------------------------------------
+   Larger screens — still centered, slightly more breathing room
+   -------------------------------------------------------------------------- */
+
+@media (min-width: 480px) {
+  .page {
+    padding-top: 3.5rem;
+    padding-bottom: 3rem;
+  }
+
+  .links {
+    gap: 0.875rem;
+  }
+
+  .link-btn {
+    padding: 1.125rem 1.5rem;
+    font-size: 1.0625rem;
+  }
+}
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
