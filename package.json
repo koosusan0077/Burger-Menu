@@ -1,0 +1,15 @@
+{
+  "name": "mybw-burger-link",
+  "version": "1.0.0",
+  "private": true,
+  "description": "MYBW Burger link-in-bio page",
+  "scripts": {
+    "dev": "browser-sync start --server --files 'index.html, style.css, assets/**/*' --port 8080 --index index.html",
+    "start": "serve . -l 8080",
+    "preview": "npm run start"
+  },
+  "devDependencies": {
+    "browser-sync": "^3.0.3",
+    "serve": "^14.2.4"
+  }
+}
